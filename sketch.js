@@ -1,4 +1,4 @@
-let myBall; 
+let myBallSpeed=4
 
 // let ballsSpeed= 4
 
@@ -8,7 +8,7 @@ function setup() {
       }
 
 function draw() {
-  background(200);
+  background(255);
     myBall.update();
     myBall.display();
    
@@ -16,20 +16,21 @@ function draw() {
 
   class Ball {
     constructor(height, width){
-      this.x = 200;
+      this.x = 0;
       this.y = 200;
-      this.diameter = random(0, 20);
+      this.diameter = 20;
     }
 
       update(){
-        this.x = this.x - 10
-        this.y = this.y + 100
-        this.diameter = this.diameter - 5
-        if(this.x>=width) {
-    this.diameter=-0.96*this.diameter
+        this.x = this.x +myBallSpeed
+        // this.y = this.y + 10
+        // this.diameter = this.diameter - 5
+        if(this.x<0 || this.x>=width) {
+   myBallSpeed=-myBallSpeed
   }
       }
       display(){
-        ellipse(this.x, this.y, this.diameter);
+        ellipse(this.x, this.y, this.diameter,this.diameter);
+        fill(0)
       }
   }

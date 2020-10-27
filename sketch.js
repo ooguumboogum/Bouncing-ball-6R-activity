@@ -1,48 +1,35 @@
-let balls=[];
+let myBall; 
+
+// let ballsSpeed= 4
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);{
-  
-  // ball[0]= {
-  //   x: random(width),
-  //   y: random(50),
-  //   dy: 0,
-}
+  createCanvas(400, 400); 
+  myBall=new Ball();
+      }
 
 function draw() {
   background(200);
-  Ball.ball=new Ball();
-  for (let i=0;i<balls.length;i++) {
-    balls[i].move();
-  }
-}
-function move(){
-  
-  ball0.y += ball0.dy;
-  ball0.dy += 0.25;
-  circle(ball0.x, ball0.y, 50);
-  
-  ball1.y += ball1.dy;
-  ball1.dy += 0.25;
-  circle(ball1.x, ball1.y, 50);
+    myBall.update();
+    myBall.display();
+   
+ }
 
-  // if the object hits the bottom of the canvas
-  // make it go up instead of down
-  
-  if (ball0.y >= height) {
-    ball0.dy = -0.95 * ball0.dy;
-  }
-  
-  if (ball1.y >= height) {
-    ball1.dy = -0.95 * ball1.dy;
-  }
-}
+  class Ball {
+    constructor(height, width){
+      this.x = 200;
+      this.y = 200;
+      this.diameter = random(0, 20);
+    }
 
-class Ball {
-  constructor(){
-    this.x= random(width);
-    this.y = random(50);
-    this.dy=0;
+      update(){
+        this.x = this.x - 10
+        this.y = this.y + 100
+        this.diameter = this.diameter - 5
+        if(this.x>=width) {
+    this.diameter=-0.96*this.diameter
   }
-}
-}
+      }
+      display(){
+        ellipse(this.x, this.y, this.diameter);
+      }
+  }
